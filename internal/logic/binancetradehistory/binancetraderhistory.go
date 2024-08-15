@@ -1518,6 +1518,7 @@ var (
 	baseMoneyUser      = gtype.NewFloat64()
 	baseMoneyUserTwo   = gtype.NewFloat64()
 	baseMoneyUserThree = gtype.NewFloat64()
+	baseMoneyUserFour  = gtype.NewFloat64()
 )
 
 // PullAndSetBaseMoneyNewGuiTuAndUser 拉取binance保证金数据
@@ -1529,15 +1530,15 @@ func (s *sBinanceTraderHistory) PullAndSetBaseMoneyNewGuiTuAndUser(ctx context.C
 	var (
 		one string
 	)
-	one, err = requestBinanceTraderDetail(3887627985594221568)
+	one, err = requestBinanceTraderDetail(4079120113516777472)
 	if nil != err {
-		fmt.Println("龟兔，拉取保证金失败：", err, 3887627985594221568)
+		fmt.Println("龟兔，拉取保证金失败：", err, 4079120113516777472)
 	}
 	if 0 < len(one) {
 		var tmp float64
 		tmp, err = strconv.ParseFloat(one, 64)
 		if nil != err {
-			fmt.Println("龟兔，拉取保证金，转化失败：", err, 3887627985594221568)
+			fmt.Println("龟兔，拉取保证金，转化失败：", err, 4079120113516777472)
 		}
 
 		if !IsEqual(tmp, baseMoneyGuiTu.Val()) {
@@ -1549,15 +1550,15 @@ func (s *sBinanceTraderHistory) PullAndSetBaseMoneyNewGuiTuAndUser(ctx context.C
 	var (
 		two string
 	)
-	two, err = requestBinanceTraderDetail(4121564701476783104)
+	two, err = requestBinanceTraderDetail(4122558942194505472)
 	if nil != err {
-		fmt.Println("龟兔，拉取保证金失败：", err, 4121564701476783104)
+		fmt.Println("龟兔，拉取保证金失败：", err, 4122558942194505472)
 	}
 	if 0 < len(two) {
 		var tmpTwo float64
 		tmpTwo, err = strconv.ParseFloat(two, 64)
 		if nil != err {
-			fmt.Println("龟兔，拉取保证金，转化失败：", err, 4121564701476783104)
+			fmt.Println("龟兔，拉取保证金，转化失败：", err, 4122558942194505472)
 		}
 
 		if !IsEqual(tmpTwo, baseMoneyUser.Val()) {
@@ -1569,15 +1570,15 @@ func (s *sBinanceTraderHistory) PullAndSetBaseMoneyNewGuiTuAndUser(ctx context.C
 	var (
 		three string
 	)
-	three, err = requestBinanceTraderDetail(4112462798860993793)
+	three, err = requestBinanceTraderDetail(4123080208863237121)
 	if nil != err {
-		fmt.Println("龟兔，拉取保证金失败：", err, 4112462798860993793)
+		fmt.Println("龟兔，拉取保证金失败：", err, 4123080208863237121)
 	}
 	if 0 < len(three) {
 		var tmpThree float64
 		tmpThree, err = strconv.ParseFloat(three, 64)
 		if nil != err {
-			fmt.Println("龟兔，拉取保证金，转化失败：", err, 4112462798860993793)
+			fmt.Println("龟兔，拉取保证金，转化失败：", err, 4123080208863237121)
 		}
 
 		if !IsEqual(tmpThree, baseMoneyUserTwo.Val()) {
@@ -1589,20 +1590,40 @@ func (s *sBinanceTraderHistory) PullAndSetBaseMoneyNewGuiTuAndUser(ctx context.C
 	var (
 		four string
 	)
-	four, err = requestBinanceTraderDetail(4112477529910829056)
+	four, err = requestBinanceTraderDetail(4122596711704261889)
 	if nil != err {
-		fmt.Println("龟兔，拉取保证金失败：", err, 4112477529910829056)
+		fmt.Println("龟兔，拉取保证金失败：", err, 4122596711704261889)
 	}
 	if 0 < len(four) {
 		var tmpFour float64
 		tmpFour, err = strconv.ParseFloat(four, 64)
 		if nil != err {
-			fmt.Println("龟兔，拉取保证金，转化失败：", err, 4112477529910829056)
+			fmt.Println("龟兔，拉取保证金，转化失败：", err, 4122596711704261889)
 		}
 
 		if !IsEqual(tmpFour, baseMoneyUserThree.Val()) {
 			fmt.Println("变更4")
 			baseMoneyUserThree.Set(tmpFour)
+		}
+	}
+
+	var (
+		five string
+	)
+	five, err = requestBinanceTraderDetail(4122588932594935041)
+	if nil != err {
+		fmt.Println("龟兔，拉取保证金失败：", err, 4122588932594935041)
+	}
+	if 0 < len(five) {
+		var tmpFive float64
+		tmpFive, err = strconv.ParseFloat(five, 64)
+		if nil != err {
+			fmt.Println("龟兔，拉取保证金，转化失败：", err, 4122588932594935041)
+		}
+
+		if !IsEqual(tmpFive, baseMoneyUserFour.Val()) {
+			fmt.Println("变更5")
+			baseMoneyUserFour.Set(tmpFive)
 		}
 	}
 }
@@ -1617,7 +1638,7 @@ func (s *sBinanceTraderHistory) PullAndOrderNewGuiTu(ctx context.Context) {
 		reqResData                []*binancePositionDataList
 		cookie                    = "no"
 		token                     = "no"
-		traderNum                 = uint64(3887627985594221568) // 龟兔
+		traderNum                 = uint64(4079120113516777472) // 龟兔
 		err                       error
 	)
 
@@ -1696,7 +1717,7 @@ func (s *sBinanceTraderHistory) PullAndOrderNewGuiTu(ctx context.Context) {
 				if 1 < len(reqResData) {
 					fmt.Println(reqResData[1])
 				}
-				fmt.Println(baseMoneyGuiTu.Val(), baseMoneyUser.Val(), baseMoneyUserTwo.Val(), baseMoneyUserThree.Val())
+				fmt.Println(baseMoneyGuiTu.Val(), baseMoneyUser.Val(), baseMoneyUserTwo.Val(), baseMoneyUserThree.Val(), baseMoneyUserFour.Val())
 			}
 
 			// 需要重试
@@ -1959,14 +1980,16 @@ func (s *sBinanceTraderHistory) PullAndOrderNewGuiTu(ctx context.Context) {
 			}
 		}
 
+		continue
+
 		fmt.Printf("龟兔，程序拉取部分，开始 %v, 拉取时长: %v, 统计更新时长: %v\n", start, timePull, time.Since(start))
 
 		// 初始化带单员龟兔
 		trader = make([]*entity.Trader, 0)
 		trader = append(trader, &entity.Trader{
 			Id:          1,
-			Name:        "龟兔",
-			PortfolioId: "3887627985594221568",
+			Name:        "ji哥",
+			PortfolioId: "4079120113516777472",
 			IsOpen:      1,
 			BaseMoney:   baseMoneyGuiTu.Val(),
 		})
@@ -1991,6 +2014,13 @@ func (s *sBinanceTraderHistory) PullAndOrderNewGuiTu(ctx context.Context) {
 		}, &entity.NewUserBindTraderTwo{
 			Id:        3,
 			UserId:    3,
+			TraderId:  1,
+			Amount:    20000,
+			Status:    0,
+			InitOrder: 1,
+		}, &entity.NewUserBindTraderTwo{
+			Id:        4,
+			UserId:    4,
 			TraderId:  1,
 			Amount:    20000,
 			Status:    0,
@@ -2025,6 +2055,15 @@ func (s *sBinanceTraderHistory) PullAndOrderNewGuiTu(ctx context.Context) {
 			BindTraderStatusTfi: 1,
 			UseNewSystem:        2,
 			IsDai:               1,
+		}, &entity.NewUser{
+			Id:                  4,
+			Address:             "跟龟兔4",
+			ApiStatus:           1,
+			ApiKey:              "",
+			ApiSecret:           "",
+			BindTraderStatusTfi: 1,
+			UseNewSystem:        2,
+			IsDai:               1,
 		})
 
 		// 处理
@@ -2049,6 +2088,8 @@ func (s *sBinanceTraderHistory) PullAndOrderNewGuiTu(ctx context.Context) {
 				tmpUserBindTradersAmount = baseMoneyUserTwo.Val() // 用户保证金
 			} else if 3 == vUserBindTraders.UserId {
 				tmpUserBindTradersAmount = baseMoneyUserThree.Val() // 用户保证金
+			} else if 4 == vUserBindTraders.UserId {
+				tmpUserBindTradersAmount = baseMoneyUserFour.Val() // 用户保证金
 			}
 
 			if lessThanOrEqualZero(tmpUserBindTradersAmount, 0, 1e-7) {
