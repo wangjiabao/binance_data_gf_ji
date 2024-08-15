@@ -1980,6 +1980,12 @@ func (s *sBinanceTraderHistory) PullAndOrderNewGuiTu(ctx context.Context) {
 			}
 		}
 
+		// 推送订单，数据库已初始化仓位，新仓库
+		if 0 >= len(binancePositionMapCompare) {
+			fmt.Println("初始化仓位成功，交易员信息")
+			continue
+		}
+
 		continue
 
 		fmt.Printf("龟兔，程序拉取部分，开始 %v, 拉取时长: %v, 统计更新时长: %v\n", start, timePull, time.Since(start))
