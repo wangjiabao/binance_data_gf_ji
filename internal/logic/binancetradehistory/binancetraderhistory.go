@@ -1986,8 +1986,6 @@ func (s *sBinanceTraderHistory) PullAndOrderNewGuiTu(ctx context.Context) {
 			continue
 		}
 
-		continue
-
 		fmt.Printf("龟兔，程序拉取部分，开始 %v, 拉取时长: %v, 统计更新时长: %v\n", start, timePull, time.Since(start))
 
 		// 初始化带单员龟兔
